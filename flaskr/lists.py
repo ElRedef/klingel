@@ -10,36 +10,65 @@ import os
 bp = Blueprint('lists', __name__, url_prefix='/')
 
 
-
+#Einstellen wo die Bilder gespeichert sind
 PATH = 'X:\pic'
 #PATH = '/home/pi/pic'
 
 
+#Dies wird benötigt um die Bilder sortieren zu koenne
+def get_year(event):
+    return event.get('year')
 
+def get_month(event):
+    return event.get('month')
+
+def get_day(event):
+    return event.get('day')
+
+def get_hour(event):
+    return event.get('hour')
+
+def get_min(event):
+    return event.get('min')
+
+def get_sec(event):
+    return event.get('sec')
+
+#sortiert die Bilder(events)
+def sort(e):
+    e.sort(key=get_sec,reverse=True)    
+    e.sort(key=get_min,reverse=True)    
+    e.sort(key=get_hour,reverse=True)    
+
+    e.sort(key=get_day,reverse=True)    
+    e.sort(key=get_month,reverse=True)    
+    e.sort(key=get_year,reverse=True)   
+
+#Geht durch das angegebene Verzeichnis und sucht alle Bilder
 def parse_dir():
     events = []
-
-    
 
     for filename in os.listdir(PATH):
         a =filename.split(".") #trennt .jpg am Schluss ab
         b=a[0].split("_")
-        try:
+        try: #Nur machen wenn der Dateiname das 'richtige' Format hat
             event = {'year':b[0],'month':b[1], 'day':b[2], 
                 'hour':b[3], 'min':b[4],'sec':b[5],'msec':b[6],
                 'filename':filename}
             events.append(event)
         except:
             print("kann Datei nicht öffnen")
+    sort(events)
     return events
 
+###################################
+#ab hier flask aufrufe
 
 @bp.route('/')
 @bp.route('/list')
 def list():
     events = parse_dir()
     return render_template('list.html', events=events)
-
 
 @bp.route('/piclist')
 def piclist():
