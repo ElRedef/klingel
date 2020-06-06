@@ -1,0 +1,24 @@
+<!doctype html>
+<title>Klingel</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+<style type="text/css">
+  tbody tr:nth-child(even) { 
+    background-color: #e4ebf2; 
+    color: #000;   
+ 
+
+}
+ 
+ </style>
+<nav>
+  <h1>Klingel</h1>
+  <ul>
+    Haupteingang
+  </ul>
+</nav>
+<section class="content">
+  <header>
+    {% block header %}{% endblock %}
+  </header>
+  {% block content %}{% endblock %}
+</section>
