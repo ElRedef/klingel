@@ -1,0 +1,29 @@
+<!doctype html>
+<title>List of events</title>
+
+
+
+<table>
+    <tr>
+        <th>Jahr</th>
+        <th>Monat</th>
+        <th>Tag</th>
+        <th>Stunde</th>
+        <th>Minute</th>
+        <th>Sekunde</th>
+        <th>Link</th>
+    </tr>
+
+
+{% for e in events %}
+<tr>
+    <td>{{ e["year"]}}</td>
+    <td>{{ e["month"]}}</td>
+    <td>{{ e["day"]}}</td>
+    <td>{{ e["hour"]}}</td>
+    <td>{{ e["min"]}}</td>
+    <td>{{ e["sec"]}}</td>
+    <td><a href={{ e["filename"]}}> link</a></td>
+</tr>
+{% endfor %}
+</table>
