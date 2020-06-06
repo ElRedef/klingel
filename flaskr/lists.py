@@ -11,7 +11,8 @@ bp = Blueprint('lists', __name__, url_prefix='/')
 
 
 
-PATH = 'X:\pic'
+#PATH = 'X:\pic'
+PATH = '/home/pi/pic'
 
 
 
