@@ -4,8 +4,9 @@ from flask import render_template
 import datetime
 import os
 
-directory = 'X:\\pic'
-app = Flask(__name__, static_folder=directory) 
+
+PATH = '/home/pi/pic/'
+app = Flask(__name__, static_folder=PATH) 
 
 
 def date_time():
@@ -17,7 +18,7 @@ def date_time():
 def parse_dir():
     events = []
 
-    for filename in os.listdir(directory):
+    for filename in os.listdir(PATH):
         a =filename.split(".") #trennt .jpg am Schluss ab
         b=a[0].split("_")
         try:
