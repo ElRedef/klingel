@@ -1,7 +1,10 @@
-<!doctype html>
-<title>List of events</title>
+{% extends 'base.html' %}
 
+{% block header %}
+  <h1>Liste mit Bildern</h1>
+{% endblock %}
 
+{% block content %}
 
 <table>
     <tr>
@@ -12,7 +15,7 @@
 
 {% for e in events %}
 <tr>
-    <td><a href={{ e["filename"]}}><img src={{ e["filename"]}} width="150" height="150"></a></td>
+    <td><a href={{ e["filename"]}}><img src={{ e["filename"]}} width="100" height="100"></a></td>
     <td>
         {{ e["year"]}}
         {{ e["month"]}}
@@ -23,3 +26,12 @@
 </tr>
 {% endfor %}
 </table>
+
+
+{% endblock %}
+
+
+
+
+
+
