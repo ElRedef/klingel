@@ -1,22 +1,24 @@
-from flask import Flask
-from flask import send_from_directory
-from flask import render_template
-import datetime
+
+import functools
+from flask import (
+    Blueprint, flash, g, redirect, render_template, request, session, url_for, send_from_directory
+)
 import os
 
 
-PATH = '/home/pi/pic/'
-app = Flask(__name__, static_folder=PATH) 
+
+bp = Blueprint('lists', __name__, url_prefix='/')
 
 
-def date_time():
-    now = datetime.datetime.now()
-    date_time = now.strftime("%Y_%m_%d_%H_%M_%S_%f")
-    return date_time
+
+PATH = 'X:\pic'
+
 
 
 def parse_dir():
     events = []
+
+    
 
     for filename in os.listdir(PATH):
         a =filename.split(".") #trennt .jpg am Schluss ab
@@ -31,25 +33,24 @@ def parse_dir():
     return events
 
 
-@app.route('/')
+@bp.route('/')
 def los():
-    return 'Hello Bild!'
+    return 'Hello Bild2!'
 
 
-@app.route('/list')
+@bp.route('/list')
 def list():
     events = parse_dir()
     return render_template('list.html', events=events)
 
-@app.route('/piclist')
+
+@bp.route('/piclist')
 def piclist():
     events = parse_dir()
     return render_template('pic_list.html', events=events)
 
-@app.route('/<path:filename>')  
+@bp.route('/<path:filename>')  
 def send_file(filename):  
-    return send_from_directory(app.static_folder, filename)
+    return send_from_directory(PATH, filename)
 
 
-if __name__ == '__main__':
-    app.run(host='0.0.0.0')
