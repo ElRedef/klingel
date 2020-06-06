@@ -11,8 +11,8 @@ bp = Blueprint('lists', __name__, url_prefix='/')
 
 
 
-#PATH = 'X:\pic'
-PATH = '/home/pi/pic'
+PATH = 'X:\pic'
+#PATH = '/home/pi/pic'
 
 
 
@@ -35,10 +35,6 @@ def parse_dir():
 
 
 @bp.route('/')
-def los():
-    return 'Hello Bild2!'
-
-
 @bp.route('/list')
 def list():
     events = parse_dir()

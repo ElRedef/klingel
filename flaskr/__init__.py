@@ -28,6 +28,8 @@ def create_app(test_config=None):
     from . import lists
     app.register_blueprint(lists.bp)
 
+    from . import live
+    app.register_blueprint(live.bp)
 
 
     return app
