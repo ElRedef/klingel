@@ -11,8 +11,8 @@ bp = Blueprint('lists', __name__, url_prefix='/')
 
 
 #Einstellen wo die Bilder gespeichert sind
-PATH = 'X:\pic'
-#PATH = '/home/pi/pic'
+#PATH = 'X:\pic'
+PATH = '/home/pi/pic'
 
 
 #Dies wird benötigt um die Bilder sortieren zu koenne
