@@ -4,7 +4,7 @@ from flask import (
     Blueprint, flash, g, redirect, render_template, request, session, url_for, send_from_directory
 )
 import os
-
+import datetime
 
 
 bp = Blueprint('lists', __name__, url_prefix='/')
@@ -79,7 +79,12 @@ def piclist():
 @bp.route('/todaylist')
 def todaylist():
     events = parse_dir()
-    return render_template('pic_list.html', events=events,Heading="Liste von heute")
+    now = datetime.datetime.now()
+    events_heute = []
+    for e in events:
+        if int(get_day(e)) == now.day:
+            events_heute.append(e)
+    return render_template('pic_list.html', events=events_heute,Heading="Liste von heute")
 
 
 @bp.route('/<path:filename>')  
