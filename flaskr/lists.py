@@ -73,7 +73,7 @@ def list():
 @bp.route('/piclist')
 def piclist():
     events = parse_dir()
-    return render_template('pic_list.html', events=events)
+    return render_template('pic_list.html', events=events,Heading="Liste aller Bilder")
 
 @bp.route('/<path:filename>')  
 def send_file(filename):  
