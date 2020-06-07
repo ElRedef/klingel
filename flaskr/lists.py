@@ -75,6 +75,13 @@ def piclist():
     events = parse_dir()
     return render_template('pic_list.html', events=events,Heading="Liste aller Bilder")
 
+
+@bp.route('/todaylist')
+def todaylist():
+    events = parse_dir()
+    return render_template('pic_list.html', events=events,Heading="Liste von heute")
+
+
 @bp.route('/<path:filename>')  
 def send_file(filename):  
     return send_from_directory(PATH, filename)
