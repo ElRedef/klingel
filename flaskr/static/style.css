@@ -1,4 +1,4 @@
-html {
+  html {
     font-family: sans-serif;
     background: #eee;
     padding: 1rem;
@@ -131,6 +131,26 @@ html {
   input[type=submit] {
     align-self: start;
     min-width: 10em;
+  }
+
+  tbody tr:nth-child(even) { 
+    background-color: #e4ebf2; 
+    color: #000;   
+  }
+
+  nav {
+  display: block;
+  }
+
+
+  .piclist{
+    
+
+  }
+  img.piclist{
+    max-width: 760px;
+    max-height: 760px;
+    
   }
 
 

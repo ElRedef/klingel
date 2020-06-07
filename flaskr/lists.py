@@ -1,10 +1,10 @@
 
 import functools
 from flask import (
-    Blueprint, flash, g, redirect, render_template, request, session, url_for, send_from_directory
+    Blueprint, flash, g, redirect, render_template, request, session, url_for, send_from_directory, abort
 )
 import os
-
+import datetime
 
 
 bp = Blueprint('lists', __name__, url_prefix='/')
@@ -64,7 +64,7 @@ def parse_dir():
 ###################################
 #ab hier flask aufrufe
 
-@bp.route('/')
+
 @bp.route('/list')
 def list():
     events = parse_dir()
@@ -73,7 +73,35 @@ def list():
 @bp.route('/piclist')
 def piclist():
     events = parse_dir()
-    return render_template('pic_list.html', events=events)
+    return render_template('pic_list.html', events=events,Heading="Liste aller Bilder")
+
+
+@bp.route('/letzte', methods=['GET'])
+def letzte():
+    events = parse_dir()
+    try:
+        pic=request.args.get('pic')
+        print("Das Bild Nr: " + pic + " wurde angefragt")
+        pic=int(pic)
+        filename = events[pic].get("filename")
+    except:
+        abort(404)
+    return send_from_directory(PATH, filename)
+
+
+@bp.route('/')
+@bp.route('/todaylist')
+def todaylist():
+    events = parse_dir()
+    now = datetime.datetime.now()
+    events_heute = []
+    for e in events:
+        if int(get_day(e)) == now.day:
+            events_heute.append(e)
+    return render_template('pic_list.html', events=events_heute,Heading="Liste von heute")
+
+
+
 
 @bp.route('/<path:filename>')  
 def send_file(filename):  
