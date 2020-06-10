@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{{Heading}}</h1>
+{% endblock %}
+
+{% block content %}
+
+<br>
+<table class = piclist>
+    <tr>
+        <th>Datum</th>
+        <th>Bild</th>
+    </tr>
+
+
+{% for e in events %}
+<tr>
+    
+    <td>
+        {{ e["year"]}}
+        {{ e["month"]}}
+        {{ e["day"]}}
+    <br>
+        {{ e["hour"]}}:{{ e["min"]}}
+    </td>
+    <td><a href={{ e["filename"]}}><img src={{ e["filename"]}} class=piclist></a></td>
+</tr>
+{% endfor %}
+</table>
+
+
+{% endblock %}
+
+
+
+
+
+

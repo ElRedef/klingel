@@ -1,0 +1,4 @@
+graft klingel/static
+graft klingel/templates
+graft tests
+global-exclude *.pyc
