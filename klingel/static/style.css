@@ -144,13 +144,15 @@
 
 
   .piclist{
-    
-
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;  
   }
   img.piclist{
     max-width: 760px;
     max-height: 760px;
-    
+
+
   }
 
 

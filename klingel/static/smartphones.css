@@ -14,10 +14,12 @@
     font-family: serif;
     color: #377ba8;
     margin: 1rem 0;
+    font-size: xx-large;
   }
   
   a {
     color: #377ba8;
+    font-size: xx-large;
   }
   
   hr {
@@ -144,9 +146,12 @@
 
 
   .piclist{
-    
-
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;  
   }
+
+
   img.piclist{
     max-width: 760px;
     max-height: 760px;
