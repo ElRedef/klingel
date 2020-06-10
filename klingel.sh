@@ -4,7 +4,7 @@ case "$1" in
     start)
         echo "Starte alles fuer die Klingel"
             
-            export FLASK_APP=flaskr
+            export FLASK_APP=klingel
             export FLASK_ENV=development
             flask run --host=0.0.0.0 
             /home/pi/hausautomatisierung/klingel/livecam/mjpeg.sh 

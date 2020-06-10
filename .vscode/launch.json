@@ -10,7 +10,7 @@
             "request": "launch",
             "module": "flask",
             "env": {
-                "FLASK_APP": "flaskr",
+                "FLASK_APP": "klingel",
                 "FLASK_ENV": "development",
                 "FLASK_DEBUG": "0"
             },
