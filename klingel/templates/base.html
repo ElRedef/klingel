@@ -1,6 +1,9 @@
 <!doctype html>
 <title>Klingel</title>
-<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+<head>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <link rel="stylesheet" media="all and (max-device-width: 480px)"  href="{{ url_for('static', filename='smartphones.css') }}">
+</head>
 
 
 <nav>
