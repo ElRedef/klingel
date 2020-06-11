@@ -4,7 +4,8 @@ from flask import Flask
 from python_json_config import ConfigBuilder
 
 
-
+#TODO: Handling wenn Datei nicht gefunden
+#TODO: Pfad der Config Datei ueber ENV einlesen
 def loadconfig():
     global path
 
