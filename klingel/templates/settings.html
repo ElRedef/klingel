@@ -7,27 +7,39 @@
 
 {% block content %}
  
-<br>
-<br>
-<table>
-    <thead>
+    <br><br>
+    <h2>General settings: </h2>
+    <table>
+        <thead>
+                <tr>
+                <th>Setting</th>
+                <th>Value</th>
+                <tr>
+        </thead>
+        
+        <tbody>
             <tr>
-            <th>Setting</th>
-            <th>Value</th>
+                <td>Python Version</td>
+                <td>{{ver}}</td>
+            </tr>
             <tr>
-     </thead>
-    
-    <tbody>
+                <td>PIC_PATH</td>
+                <td>{{config['PIC_PATH']}}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <br><br>
+    <h2>Flask settings: </h2>
+    <table>
+        {% for c in config %}
         <tr>
-            <td>Python Version</td>
-            <td>{{ver}}</td>
+            <td>config</td>
+            <td>{{ c}}</td>
+            <td>{{config[c]}}</td>
         </tr>
-        <tr>
-            <td>PIC_PATH</td>
-            <td>{{config['PIC_PATH']}}</td>
-        </tr>
-    </tbody>
-</table>
+        {% endfor %}
+    </table>
 
 
 {% endblock %}

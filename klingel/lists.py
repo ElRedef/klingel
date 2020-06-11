@@ -83,7 +83,7 @@ def letzte():
         filename = events[pic].get("filename")
     except:
         abort(404)
-    return send_from_directory(PATH, filename)
+    return send_from_directory(current_app.config['PIC_PATH'], filename)
 
 
 @bp.route('/')
@@ -102,6 +102,6 @@ def todaylist():
 
 @bp.route('/<path:filename>')  
 def send_file(filename):  
-    return send_from_directory(PATH, filename)
+    return send_from_directory(current_app.config['PIC_PATH'], filename)
 
 

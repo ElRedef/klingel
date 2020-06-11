@@ -15,7 +15,9 @@ bp = Blueprint('settings', __name__, url_prefix='/settings')
 def list():
     ver = sys.version
     path = current_app.config['PIC_PATH']
-    return render_template('settings.html', ver=ver, path = path, config=current_app.config)
+    #conf = current_app.config
+    conf = []
+    return render_template('settings.html', ver=ver, path = path, config=[])
 
 @bp.route('/ver')
 def ver():
