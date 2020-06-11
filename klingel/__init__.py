@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 import os
 
 from flask import Flask
@@ -13,7 +14,7 @@ def loadconfig():
     builder = ConfigBuilder()
 
     # parse config
-    config = builder.parse_config('config.json')    
+    config = builder.parse_config('/home/pi/hausautomatisierung/klingel/config.json')    
 
     path=config.path
 
