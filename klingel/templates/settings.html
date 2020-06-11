@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block header %}
-  <h1>Livebild</h1>
+  <h1>Settings</h1>
   <br>
 {% endblock %}
 
@@ -9,13 +9,25 @@
  
 <br>
 <br>
-
-
-<p style="margin: auto;">
-   SETTINGS
-</p>
-
-<br> 
+<table>
+    <thead>
+            <tr>
+            <th>Setting</th>
+            <th>Value</th>
+            <tr>
+     </thead>
+    
+    <tbody>
+        <tr>
+            <td>Python Version</td>
+            <td>{{ver}}</td>
+        </tr>
+        <tr>
+            <td>PIC_PATH</td>
+            <td>{{config['PIC_PATH']}}</td>
+        </tr>
+    </tbody>
+</table>
 
 
 {% endblock %}

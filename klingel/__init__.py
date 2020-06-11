@@ -1,5 +1,4 @@
 import os
-import sys
 
 from flask import Flask
 
@@ -33,9 +32,6 @@ def create_app(test_config=None):
     def hello():
         return 'Hello, World!'
 
-    @app.route('/ver')
-    def ver():
-        return sys.version
 
 
     from . import lists
