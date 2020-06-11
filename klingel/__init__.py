@@ -20,6 +20,8 @@ def create_app(test_config=None):
         # load the test config if passed in
         app.config.from_mapping(test_config)
 
+    app.config.update(PIC_PATH='lalal')
+
     # ensure the instance folder exists
     try:
         os.makedirs(app.instance_path)
@@ -41,5 +43,8 @@ def create_app(test_config=None):
 
     from . import live
     app.register_blueprint(live.bp)
+
+    from . import settings
+    app.register_blueprint(settings.bp)
 
     return app
