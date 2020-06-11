@@ -1,7 +1,7 @@
 
 import functools
 from flask import (
-    Blueprint, flash, g, redirect, render_template, request, session, url_for, send_from_directory, abort
+    Blueprint, flash, g, redirect, render_template, request, session, url_for, send_from_directory, abort, current_app
 )
 import os
 import datetime
@@ -10,9 +10,6 @@ import datetime
 bp = Blueprint('lists', __name__, url_prefix='/')
 
 
-#Einstellen wo die Bilder gespeichert sind
-PATH = 'X:\pic'
-#PATH = '/home/pi/pic'
 
 
 #Dies wird benoetigt um die Bilder sortieren zu koenne
@@ -48,7 +45,7 @@ def sort(e):
 def parse_dir():
     events = []
 
-    for filename in os.listdir(PATH):
+    for filename in os.listdir(current_app.config['PIC_PATH']):
         a =filename.split(".") #trennt .jpg am Schluss ab
         b=a[0].split("_")
         try: #Nur machen wenn der Dateiname das 'richtige' Format hat
