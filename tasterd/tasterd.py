@@ -1,3 +1,5 @@
+#!/usr/bin/python3
+
 from gpiozero import Button
 from time import sleep
 from picamera import PiCamera
@@ -45,8 +47,9 @@ def send_telegram(message, img_path):
         telegram_send.send(images=[f])
 
 #Macht ein Bild
-#Uber Type kann eingestellt werden ob dies über den mjpes streamer
-#Oder über die RaspiKamer gemacht wird
+#Uber Type kann eingestellt werden ob dies über den mjpeg streamer
+#Oder über die RaspiKamera gemacht wird
+#TODO: Fehler abfangen wenn z.b. MJPEG Streamer nicht erreicht werden kann
 def capture_pic(type,dest):
 
     if type=="camera":
