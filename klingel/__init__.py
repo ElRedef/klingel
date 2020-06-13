@@ -7,25 +7,16 @@ from python_json_config import ConfigBuilder
 
 #TODO: Handling wenn Datei nicht gefunden
 #TODO: Pfad der Config Datei ueber ENV einlesen
-def loadconfig():
+def loadconfig(app,test_config):
     global path
 
     # create config parser
     builder = ConfigBuilder()
 
     # parse config
-    config = builder.parse_config('/home/pi/hausautomatisierung/klingel/config.json')    
+    config = builder.parse_config('config.json')    
 
     path=config.path
-
-
-
-
-def create_app(test_config=None):
-    # create and configure the app
-    app = Flask(__name__, instance_relative_config=True)
-
-    loadconfig()
 
     app.config.from_mapping(
         SECRET_KEY='dev',
@@ -39,17 +30,20 @@ def create_app(test_config=None):
         app.config.from_mapping(test_config)
         
 
+
+
+
+def create_app(test_config=None):
+    # create and configure the app
+    app = Flask(__name__, instance_relative_config=True)
+
+    loadconfig(app,test_config)
+
     # ensure the instance folder exists
     try:
         os.makedirs(app.instance_path)
     except OSError:
         pass
-
-    # a simple page that says hello
-    @app.route('/hello')
-    def hello():
-        return 'Hello, World!'
-
 
 
     from . import lists

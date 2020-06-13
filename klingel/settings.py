@@ -24,3 +24,7 @@ def ver():
     return sys.version
 
 
+# a simple page that says hello
+@bp.route('/hello')
+def hello():
+    return 'Hello, Pytest!'
