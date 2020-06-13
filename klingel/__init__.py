@@ -8,21 +8,30 @@ from python_json_config import ConfigBuilder
 #TODO: Handling wenn Datei nicht gefunden
 #TODO: Pfad der Config Datei ueber ENV einlesen
 def loadconfig(app,test_config):
-    global path
+
+    try:
+        settings_file = os.environ['KLINGEL_SETTING_FILE']
+        print("Reading Settings from: "+settings_file)
+    except:
+        print("Cannot read environment variable: KLINGEL_SETTING_FILE")
+        settings_file = 'config.json'
+    
 
     # create config parser
     builder = ConfigBuilder()
 
     # parse config
-    config = builder.parse_config('config.json')    
-
-    path=config.path
+    try:
+        config = builder.parse_config(settings_file)    
+    except: 
+        print("Cannot read setting file: " + settings_file)
+        return
 
     app.config.from_mapping(
         SECRET_KEY='dev',
         DATABASE=os.path.join(app.instance_path, 'klingel.sqlite'),
         host='0.0.0.0',
-        PIC_PATH=path,
+        PIC_PATH=config.path,
     )
 
     if test_config != None:
