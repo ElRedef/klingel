@@ -8,8 +8,10 @@ import requests
 import telegram_send
 import datetime
 import urllib.request
+from shutil import copyfile
 
-print("GPIO Daemon")
+
+print("Klingel GPIO Daemon")
 
 #Einstellungen
 PUSHOVER_USER_KEY = "ue1j2qp7uuinvrcuvmzztojobzv3re"
@@ -19,6 +21,12 @@ RASPI_BUTTON = Button(14)  # an diesen Port ist der Taster angeschlossen
 MESSAGE = "Es ist jemand an der Tür"  #Diese Nachricht wird gesendet
 PIC_URL = 'http://raspi:8080/?action=snapshot' #URL MJPEG Streamer um Bild abzuholen
 PIC_SOURCE = "streamer"   #Gibt an wie das Bild aufgenomment wird: "streamer" oder "camera"
+
+
+
+
+
+
 
 #Gibt einen String zurueck der das Datum wiederspiegelt
 def date_time():
@@ -56,10 +64,19 @@ def capture_pic(type,dest):
         camera = PiCamera()
         try:
             camera.capture(dest)  
+        except:
+            #print("Failed to make image via " + PIC_URL)
+            src = "no_pic.jpg"
         finally:
             camera.close()
     if type == "streamer":
-        urllib.request.urlretrieve(PIC_URL,dest)
+        try:
+            urllib.request.urlretrieve(PIC_URL,dest)
+        except:
+            #print("Failed to make image via " + PIC_URL)
+            src = "no_pic.jpg"
+            copyfile(src, dest)
+            
 
 
 while True:
@@ -68,6 +85,7 @@ while True:
         print("Pressed")
         img_path=PATH + date_time() + '.jpg'
         capture_pic(PIC_SOURCE,img_path)
+        sleep(0.2)
         send_pushover(MESSAGE,img_path)
         send_telegram(MESSAGE,img_path)
         sleep(2) #verhindert Sturmklingeln
