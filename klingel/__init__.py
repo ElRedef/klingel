@@ -14,6 +14,7 @@ def loadconfig(app,test_config):
         print("Reading Settings from: "+settings_file)
     except:
         print("Cannot read environment variable: KLINGEL_SETTING_FILE")
+        print("using default: config.json")
         settings_file = 'config.json'
     
 
@@ -47,6 +48,10 @@ def create_app(test_config=None):
     app = Flask(__name__, instance_relative_config=True)
 
     loadconfig(app,test_config)
+
+    if not os.path.isdir(app.config['PIC_PATH']):
+        print('ERROR: PIC_PATH is not a valid path!')
+        
 
     # ensure the instance folder exists
     try:
