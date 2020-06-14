@@ -1,0 +1,10 @@
+{
+    "image_path": "/home/pi/pic",
+    "path": "/home/pi/pic",
+    "PUSHOVER_USER_KEY":  "ue1j2qp7uuinvrcuvmzztojobzv3re",
+    "PUSHOVER_APP_TOKEN": "asrgueig8omqmoh4zdvvxqt8kevs45",
+    "RASPI_BUTTON" : "Button(14)", 
+    "MESSAGE" : "Es ist jemand an der Tür",  
+    "PIC_URL" : "http://raspi:8080/?action=snapshot", 
+    "PIC_SOURCE":  "streamer" 
+}
