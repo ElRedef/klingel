@@ -32,7 +32,7 @@ def loadconfig(app,test_config):
         SECRET_KEY='dev',
         DATABASE=os.path.join(app.instance_path, 'klingel.sqlite'),
         host='0.0.0.0',
-        PIC_PATH=config.path,
+        PIC_PATH=config.pic_path,
     )
 
     if test_config != None:
