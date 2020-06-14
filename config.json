@@ -1,5 +1,6 @@
 {
     "image_path": "/home/pi/pic",
+    "no_path": "/home/pi/hausautomatisierung/klingel/tasterd/",
     "pic_path": "/home/pi/pic",
     "PUSHOVER_USER_KEY":  "ue1j2qp7uuinvrcuvmzztojobzv3re",
     "PUSHOVER_APP_TOKEN": "asrgueig8omqmoh4zdvvxqt8kevs45",

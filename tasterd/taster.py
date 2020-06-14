@@ -23,7 +23,7 @@ class taster():
         print("Klingel GPIO Daemon")
         self.loadconfig()
         self.RASPI_BUTTON = Button(14)  # an diesen Port ist der Taster angeschlossen
-        
+         
         #Einstellungen
         #self.PUSHOVER_USER_KEY = "ue1j2qp7uuinvrcuvmzztojobzv3re"
         #self.PUSHOVER_APP_TOKEN= "asrgueig8omqmoh4zdvvxqt8kevs45"
@@ -109,7 +109,7 @@ class taster():
                 urllib.request.urlretrieve(self.config.PIC_URL,dest)
             except:
                 print("Failed to make image via " + self.config.PIC_URL)
-                src = "no_pic.jpg"
+                src = self.config.no_path + "no_pic.jpg"
                 copyfile(src, dest)
                 
     #################################################################

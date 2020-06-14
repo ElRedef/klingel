@@ -30,7 +30,7 @@ case "$1" in
     
     tasterd)        
         export KLINGEL_SETTING_FILE=/home/pi/hausautomatisierung/klingel/config.json
-        /home/pi/hausautomatisierung/klingel/tasterd/taster.py & 
+        su pi  -c  /home/pi/hausautomatisierung/klingel/tasterd/taster.py & 
         ;;        
         
         
