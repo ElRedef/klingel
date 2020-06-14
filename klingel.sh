@@ -6,23 +6,31 @@ case "$1" in
             
             export FLASK_APP=klingel
             export FLASK_ENV=development
-            flask run --host=0.0.0.0 
-            /home/pi/hausautomatisierung/klingel/livecam/mjpeg.sh 
-            python3  /home/pi/hausautomatisierung/klingel/tasterd/tasterd.py 
-        
+            export KLINGEL_SETTING_FILE=/home/pi/hausautomatisierung/klingel/config.json
+            flask run --host=0.0.0.0 & 
+            /home/pi/hausautomatisierung/klingel/livecam/mjpeg.sh  &
+            python3  /home/pi/hausautomatisierung/klingel/tasterd/tasterd.py  &
         ;;
     stop)
         echo "Stoppe Klingel"
+        killall flask 
+        killall mjpg_streamer 
+        killall python3 
+
+        #und jetzt sich selbst killen
+        killall klingel.sh 
+        ;;
         
-        killall klingel.sh
-        killall flask
-        killall mjpg_streamer
-        killall python3
-        
-        
+    flask)        
+        export FLASK_APP=klingel
+        export FLASK_ENV=development
+        export KLINGEL_SETTING_FILE=/home/pi/hausautomatisierung/klingel/config.json
+        flask run --host=0.0.0.0
+    
+    
         ;;
     *)
-       echo "Benutzt: /etc/init.d/klingel {start|stop}"
+       echo "Benutzt: /etc/init.d/klingel {start|stop|flask}"
        
        
        ;;
