@@ -5,6 +5,7 @@ from flask import (
 )
 import os
 import sys
+import getpass
 
 
 
@@ -15,9 +16,12 @@ bp = Blueprint('settings', __name__, url_prefix='/settings')
 def list():
     ver = sys.version
     path = current_app.config['PIC_PATH']
+    user = getpass.getuser()
+
     conf = current_app.config
     conf = [] #AAAACHTUNG: DANN WIRD AUCH DER SECRET KEY ANGEZEIGT
-    return render_template('settings.html', ver=ver, path = path, config=conf)
+    
+    return render_template('settings.html', ver=ver, path = path, user=user,config=conf)
 
 @bp.route('/ver')
 def ver():
