@@ -101,7 +101,7 @@ class taster():
                 camera.capture(dest)  
             except:
                 #print("Failed to make image via " + PIC_URL)
-                src = "no_pic.jpg"
+                src = self.config.path + "/no_pic.jpg"
             finally:
                 camera.close()
         if type == "streamer":
@@ -118,7 +118,7 @@ class taster():
             if self.RASPI_BUTTON.is_pressed:
             #if 1:
                 print("Pressed")
-                img_path=self.config.path +"/"+ self.date_time() + '.jpg'
+                img_path=self.config.image_path +"/"+ self.date_time() + '.jpg'
                 self.capture_pic(self.config.PIC_SOURCE,img_path)
                 sleep(0.2)
                 self.send_pushover(self.config.MESSAGE,img_path)
