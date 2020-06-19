@@ -1,0 +1,20 @@
+[Unit]
+Description= Taster Daemon for Klingel
+After=syslog.target
+
+[Service]
+Type=simple
+User=pi
+Group=pi
+WorkingDirectory=/home/pi/hausautomatisierung/klingel/tasterd
+ExecStart=/home/pi/hausautomatisierung/klingel/tasterd/taster.py
+SyslogIdentifier=tasterd
+StandardOutput=syslog
+StandardError=syslog
+Restart=always
+RestartSec=3
+Environment=PYTHONUNBUFFERED=1
+
+[Install]
+WantedBy=multi-user.target
+

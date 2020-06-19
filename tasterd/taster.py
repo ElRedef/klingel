@@ -42,8 +42,8 @@ class taster():
             print("Reading Settings from: "+settings_file)
         except:
             print("Cannot read environment variable: KLINGEL_SETTING_FILE")
-            print("using default: config.json")
-            settings_file = 'config.json'
+            print("using default: /home/pi/hausautomatisierung/klingel/config.json")
+            settings_file = '/home/pi/hausautomatisierung/klingel/config.json'
 
         # create config parser
         builder = ConfigBuilder()
@@ -129,7 +129,10 @@ class taster():
     
     
 #################################################################
-if __name__ == "__main__":    
+if __name__ == "__main__":   
+
+    print("Taster: Start watching")
+ 
     myApp = taster()
     if myApp.settings_available:
         myApp.run()
