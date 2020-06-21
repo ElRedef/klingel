@@ -3,13 +3,14 @@
 case "$1" in 
     start)
         echo "Starte alles fuer die Klingel"
-            
-            export FLASK_APP=klingel
-            export FLASK_ENV=development
-            export KLINGEL_SETTING_FILE=/home/pi/hausautomatisierung/klingel/config.json
-            flask run --host=0.0.0.0 & 
-            /home/pi/hausautomatisierung/klingel/livecam/mjpeg.sh  &
-            /home/pi/hausautomatisierung/klingel/tasterd/taster.py & 
+        logger "Starte alles fuer die Klingel"    
+        export FLASK_APP=klingel
+        export FLASK_ENV=development
+        export KLINGEL_SETTING_FILE=/home/pi/hausautomatisierung/klingel/config.json
+        #flask run --host=0.0.0.0 & 
+        waitress-serve  --port=5000 --call 'klingel:create_app' &
+        /home/pi/hausautomatisierung/klingel/livecam/mjpeg.sh  &
+        # /home/pi/hausautomatisierung/klingel/tasterd/taster.py & 
         ;;
     stop)
         echo "Stoppe Klingel"
@@ -27,16 +28,24 @@ case "$1" in
         export KLINGEL_SETTING_FILE=/home/pi/hausautomatisierung/klingel/config.json
         flask run --host=0.0.0.0
         ;;
+        
+     waitress)        
+        export FLASK_APP=klingel
+        export FLASK_ENV=development
+        export KLINGEL_SETTING_FILE=/home/pi/hausautomatisierung/klingel/config.json
+        waitress-serve  --port=5000 --call 'klingel:create_app' &
+        ;;
+        
     
     tasterd)        
-        export KLINGEL_SETTING_FILE=/home/pi/hausautomatisierung/klingel/config.json
-        /home/pi/hausautomatisierung/klingel/tasterd/taster.py & 
+        # export KLINGEL_SETTING_FILE=/home/pi/hausautomatisierung/klingel/config.json
+        # /home/pi/hausautomatisierung/klingel/tasterd/taster.py & 
         ;;        
         
         
         
     *)
-       echo "Benutzt: /etc/init.d/klingel {start|stop|flask|tasterd}"
+       echo "Benutzt: /etc/init.d/klingel {start|stop|flask|waitress}"
        
        
        ;;
