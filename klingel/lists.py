@@ -78,12 +78,26 @@ def letzte():
     events = parse_dir()
     try:
         pic=request.args.get('pic')
-        print("Das Bild Nr: " + pic + " wurde angefragt")
         pic=int(pic)
         filename = events[pic].get("filename")
+        print("Das Bild Nr: " + str(pic) + " mit dem Dateinamen " + filename + " wurde angefragt")
     except:
         abort(404)
     return send_from_directory(current_app.config['PIC_PATH'], filename)
+
+
+@bp.route('/letzte_html', methods=['GET'])
+def letzte_html():
+    events = parse_dir()
+    try:
+        pic=request.args.get('pic')
+        pic=int(pic)
+        filename = events[pic].get("filename")
+        print("Das Bild Nr: " + str(pic) + " mit dem Dateinamen " + filename + " wurde angefragt")
+        html =  get_day(events[pic]) + "." + get_month(events[pic])  + "." + get_year(events[pic]) 
+    except:
+        abort(404)
+    return html
 
 
 @bp.route('/')
@@ -93,10 +107,9 @@ def todaylist():
     now = datetime.datetime.now()
     events_heute = []
     for e in events:
-        if int(get_day(e)) == now.day:
+        if (int(get_day(e)) == now.day) & (int(get_month(e)) == now.month) & (int(get_year(e)) == now.year):
             events_heute.append(e)
     return render_template('pic_list.html', events=events_heute,Heading="Liste von heute")
-
 
 
 

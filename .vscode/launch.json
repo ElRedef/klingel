@@ -11,6 +11,7 @@
             "module": "flask",
             "env": {
                 "FLASK_APP": "klingel",
+                "KLINGEL_SETTING_FILE" : "C:\\Users\\Johannes\\Programming\\hausautomatisierung\\klingel\\configwin.json",
                 "FLASK_ENV": "development",
                 "FLASK_DEBUG": "0"
             },
