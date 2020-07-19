@@ -5,6 +5,7 @@ from flask import (
 )
 import os
 import datetime
+import json
 
 
 bp = Blueprint('lists', __name__, url_prefix='/')
@@ -111,6 +112,14 @@ def todaylist():
             events_heute.append(e)
     return render_template('pic_list.html', events=events_heute,Heading="Liste von heute")
 
+
+
+@bp.route('/list.json')
+def list_json():
+    events = parse_dir()
+    e = events[:3]
+    l = json.dumps(e)
+    return l
 
 
 @bp.route('/<path:filename>')  
