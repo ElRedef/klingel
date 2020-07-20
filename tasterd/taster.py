@@ -118,9 +118,12 @@ class taster():
             if self.RASPI_BUTTON.is_pressed:
             #if 1:
                 print("Pressed")
+                file = "/home/pi/hausautomatisierung/klingel/sounds/Doorbell.wav" 
+                os.system("aplay " +file + "&")
+
                 img_path=self.config.image_path +"/"+ self.date_time() + '.jpg'
                 self.capture_pic(self.config.PIC_SOURCE,img_path)
-                sleep(0.2)
+                #sleep(0.2)
                 self.send_pushover(self.config.MESSAGE,img_path)
                 self.send_telegram(self.config.MESSAGE,img_path)
                 sleep(3) #verhindert Sturmklingeln
