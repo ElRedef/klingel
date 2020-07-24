@@ -30,6 +30,7 @@ class taster():
         #self.MESSAGE = "Es ist jemand an der Tür"  #Diese Nachricht wird gesendet
         #self.PIC_URL = 'http://raspi:8080/?action=snapshot' #URL MJPEG Streamer um Bild abzuholen
         #self.PIC_SOURCE = "streamer"   #Gibt an wie das Bild aufgenomment wird: "streamer" oder "camera"
+        #self.linphone_init()
  
  
     #################################################################
@@ -111,6 +112,23 @@ class taster():
                 print("Failed to make image via " + self.config.PIC_URL)
                 src = self.config.no_path + "no_pic.jpg"
                 copyfile(src, dest)
+      
+    #################################################################
+    #Initialisiert das Linphone
+    def linphone_init(self): 
+        print("Init of Linphone")
+        c0 = "linphonecsh init"
+        c1 = "linphonecsh register --host 192.168.178.1 --username 12345678 --password Rambo123"
+        os.system(c0)
+        os.system(c1)
+        print("Init of Linphone finished")
+    
+    #################################################################
+    #Macht einen Anruf ueber Linphoe
+    def linphone_call(self):
+        c0 = "linphonecsh dial **611"
+        os.system(c0)
+        
                 
     #################################################################
     def run(self):
@@ -120,7 +138,7 @@ class taster():
                 print("Pressed")
                 file = "/home/pi/hausautomatisierung/klingel/sounds/Doorbell.wav" 
                 os.system("aplay " +file + "&")
-
+                self.linphone_call()
                 img_path=self.config.image_path +"/"+ self.date_time() + '.jpg'
                 self.capture_pic(self.config.PIC_SOURCE,img_path)
                 #sleep(0.2)

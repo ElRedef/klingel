@@ -7,5 +7,6 @@
     "RASPI_BUTTON" : "Button(14)", 
     "MESSAGE" : "Es ist jemand an der Tür",  
     "PIC_URL" : "http://raspi:8080/?action=snapshot", 
-    "PIC_SOURCE":  "streamer" 
+    "PIC_SOURCE":  "streamer", 
+    "SOUNDFILE":  "/home/pi/hausautomatisierung/klingel/sounds/Doorbell.wav" 
 }
