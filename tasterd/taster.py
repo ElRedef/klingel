@@ -115,6 +115,7 @@ class taster():
       
     #################################################################
     #Initialisiert das Linphone
+    #Wird gerade nicht verwendet. Sondern registrierung beim Startup des Pi
     def linphone_init(self): 
         print("Init of Linphone")
         c0 = "linphonecsh init"
@@ -126,7 +127,7 @@ class taster():
     #################################################################
     #Macht einen Anruf ueber Linphoe
     def linphone_call(self):
-        c0 = "linphonecsh dial **611"
+        c0 = "linphonecsh dial " + self.config.PHONE_NUMBER
         os.system(c0)
         
                 
@@ -137,7 +138,7 @@ class taster():
             #if 1:
                 print("Pressed")
                 file = "/home/pi/hausautomatisierung/klingel/sounds/Doorbell.wav" 
-                os.system("aplay " +file + "&")
+                os.system("aplay " +self.config.SOUNDFILE + "&")
                 self.linphone_call()
                 img_path=self.config.image_path +"/"+ self.date_time() + '.jpg'
                 self.capture_pic(self.config.PIC_SOURCE,img_path)

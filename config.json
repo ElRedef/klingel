@@ -8,5 +8,11 @@
     "MESSAGE" : "Es ist jemand an der Tür",  
     "PIC_URL" : "http://raspi:8080/?action=snapshot", 
     "PIC_SOURCE":  "streamer", 
+    "PHONE_NUMBER":  "**611", 
     "SOUNDFILE":  "/home/pi/hausautomatisierung/klingel/sounds/Doorbell.wav" 
+    
+    
+    
+    
+    
 }
