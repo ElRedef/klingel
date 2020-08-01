@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 
 from gpiozero import Button
-import os
+import os, signal, sys
 from time import sleep
 from picamera import PiCamera
 import http.client, urllib
@@ -11,6 +11,7 @@ import datetime
 import urllib.request
 from shutil import copyfile
 from python_json_config import ConfigBuilder
+from linphone import linphone
 
 
 
@@ -30,7 +31,9 @@ class taster():
         #self.MESSAGE = "Es ist jemand an der Tür"  #Diese Nachricht wird gesendet
         #self.PIC_URL = 'http://raspi:8080/?action=snapshot' #URL MJPEG Streamer um Bild abzuholen
         #self.PIC_SOURCE = "streamer"   #Gibt an wie das Bild aufgenomment wird: "streamer" oder "camera"
-        #self.linphone_init()
+        
+        self.phone = linphone()
+        self.phone.ini(self.config.PHONE_HOST,self.config.PHONE_USER,self.config.PHONE_PW)
  
  
     #################################################################
@@ -113,23 +116,7 @@ class taster():
                 src = self.config.no_path + "no_pic.jpg"
                 copyfile(src, dest)
       
-    #################################################################
-    #Initialisiert das Linphone
-    #Wird gerade nicht verwendet. Sondern registrierung beim Startup des Pi
-    def linphone_init(self): 
-        print("Init of Linphone")
-        c0 = "linphonecsh init"
-        c1 = "linphonecsh register --host 192.168.178.1 --username 12345678 --password Rambo123"
-        os.system(c0)
-        os.system(c1)
-        print("Init of Linphone finished")
-    
-    #################################################################
-    #Macht einen Anruf ueber Linphoe
-    def linphone_call(self):
-        c0 = "linphonecsh dial " + self.config.PHONE_NUMBER
-        os.system(c0)
-        
+       
                 
     #################################################################
     def run(self):
@@ -137,21 +124,27 @@ class taster():
             if self.RASPI_BUTTON.is_pressed:
             #if 1:
                 print("Pressed")
-                file = "/home/pi/hausautomatisierung/klingel/sounds/Doorbell.wav" 
                 os.system("aplay " +self.config.SOUNDFILE + "&")
-                self.linphone_call()
                 img_path=self.config.image_path +"/"+ self.date_time() + '.jpg'
                 self.capture_pic(self.config.PIC_SOURCE,img_path)
-                #sleep(0.2)
                 self.send_pushover(self.config.MESSAGE,img_path)
                 self.send_telegram(self.config.MESSAGE,img_path)
-                sleep(3) #verhindert Sturmklingeln
-            sleep(0.2)
+    
+                self.phone.dial(self.config.PHONE_NUMBER)
+                self.phone.wait_for_call(self.config.PHONE_CALL_TIME)
+                
+                #sleep(3) #verhindert Sturmklingeln
+            sleep(0.1)
 
     
     
 #################################################################
-if __name__ == "__main__":   
+if __name__ == "__main__":  
+
+    def signal_handler(signal, frame):
+        print('You pressed Ctrl+C!')
+        sys.exit(0)
+    signal.signal(signal.SIGINT, signal_handler) 
 
     print("Taster: Start watching")
  

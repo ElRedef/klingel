@@ -12,15 +12,15 @@ case "$1" in
         /home/pi/hausautomatisierung/klingel/livecam/mjpeg.sh  &
         # /home/pi/hausautomatisierung/klingel/tasterd/taster.py & 
         
-        echo "Registriere Linphone"
-        logger "Registriere Linphone"    
-        sleep 3
-        linphonecsh init
-        sleep 10 
-        linphonecsh register --host 192.168.178.1 --username 12345678 --password Rambo123
+        #echo "Registriere Linphone"
+        #logger "Registriere Linphone"    
+        #sleep 3
+        #linphonecsh init
+        #sleep 10 
+        #linphonecsh register --host 192.168.178.1 --username 12345678 --password Rambo123
         
-        echo "fertig Registriere Linphone"
-        logger "fertig Registriere Linphone"    
+        #echo "fertig Registriere Linphone"
+        #logger "fertig Registriere Linphone"    
         
         
         
