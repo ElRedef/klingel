@@ -5,7 +5,8 @@ from flask import (
 )
 import os
 
-from camera.camera import Camera
+#from camera.camera import Camera
+from camera.camera_pi import Camera
 
 
 bp = Blueprint('live', __name__, url_prefix='/live')

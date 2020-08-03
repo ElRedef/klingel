@@ -9,7 +9,7 @@ case "$1" in
         export KLINGEL_SETTING_FILE=/home/pi/hausautomatisierung/klingel/config.json
         #flask run --host=0.0.0.0 & 
         waitress-serve  --port=5000 --call 'klingel:create_app' &
-        /home/pi/hausautomatisierung/klingel/livecam/mjpeg.sh  &
+        #/home/pi/hausautomatisierung/klingel/livecam/mjpeg.sh  &
         # /home/pi/hausautomatisierung/klingel/tasterd/taster.py & 
         
         #echo "Registriere Linphone"
@@ -30,6 +30,7 @@ case "$1" in
         killall flask 
         killall mjpg_streamer 
         killall python3 
+        killall waitress-serve
         linphonecsh unregister
 
         #und jetzt sich selbst killen
