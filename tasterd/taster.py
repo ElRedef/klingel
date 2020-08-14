@@ -95,9 +95,9 @@ class taster():
             
     #################################################################
     #Macht ein Bild
-    #Uber Type kann eingestellt werden ob dies über den mjpeg streamer
+    #Uber Type kann eingestellt werden ob dies über eine URL
     #Oder über die RaspiKamera gemacht wird
-    #TODO: Fehler abfangen wenn z.b. MJPEG Streamer nicht erreicht werden kann
+    #TODO: Fehler abfangen wenn z.b. URL nicht erreicht werden kann
     def capture_pic(self,type,dest):
         if type=="camera":
             camera = PiCamera()

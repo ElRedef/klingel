@@ -1,7 +1,7 @@
 
 import functools
 from flask import (
-    Blueprint, flash, g, redirect, render_template, request, session, url_for, send_from_directory, Response
+    Blueprint, flash, g, redirect, render_template, request, session, url_for, send_from_directory, Response, abort, current_app
 )
 import os
 
@@ -32,6 +32,12 @@ def gen(camera):
 @bp.route('/video_feed')
 def video_feed():
     """Video streaming route. Put this in the src attribute of an img tag."""
-    return Response(gen(Camera()),
-                    mimetype='multipart/x-mixed-replace; boundary=frame')
+    return Response(gen(Camera()),mimetype='multipart/x-mixed-replace; boundary=frame')
 
+    
+@bp.route('/act_pic')
+def act_pic():
+    act_path = current_app.config['PIC_PATH']+ '//' +'actual.jpg'
+    print(act_path)
+    Camera.pic(act_path)
+    return send_from_directory(current_app.config['PIC_PATH'], 'act.jpg')  

@@ -21,3 +21,10 @@ class Camera(BaseCamera):
                 # reset stream for next frame
                 stream.seek(0)
                 stream.truncate()
+                
+    
+    def pic(act_path):
+        with picamera.PiCamera() as camera:
+            camera.capture(act_path)
+         
+        
