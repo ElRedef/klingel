@@ -7,8 +7,8 @@
 
 
 #Service starten bzw Stoppen
-sudo systemctl enable klingel
-sudo systemctl start klingel
+sudo systemctl enable tasterd
+sudo systemctl start tasterd
 
 #Logs anschauen des Tasterdaemon
 journalctl -u tasterd
@@ -131,10 +131,11 @@ telegram-send --configure
 token von Bothfather holen
 Siehe auch: https://pypi.org/project/telegram-send/#usage
 
-#auf Port 80 vervuegbar machen
-sudo iptables -t nat -A PREROUTING -p tcp --dport 80 -j REDIRECT --to-port 5000
  
+#Packet Klingel für alle verfuebar machen
+pip install -e .
 
+ 
 
 ################################################################################
 #
@@ -145,11 +146,13 @@ sudo iptables -t nat -A PREROUTING -p tcp --dport 80 -j REDIRECT --to-port 5000
 In /etc/rc.local folgendes hinzufuegen, dies startet die webapplikation und den mjpeg streamer
 logger -i -t klingel -- Starte die Klingel
 runuser -l pi -c '/home/pi/hausautomatisierung/klingel/klingel.sh start'
+sudo iptables -t nat -A PREROUTING -p tcp --dport 80 -j REDIRECT --to-port 5000
 
 Zusätzlich muss der tasterd mit systemctl gestartet werden
 tasterd.service in /etc/systemd/system/ kopieren
 und mit 
-'sudo systemctl enable klingel'
+sudo systemctl enable tasterd
+sudo systemctl start tasterd
 enablen
 
   
@@ -160,8 +163,11 @@ enablen
 #
 ################################################################################
 tasterd: Exception abfangen wenn URL für Bild falsch bzw. flask nicht läuft? Hostname nicht bekannt?
+flask: Adresse für Video in JSON File konfigurierbar machen
+klingel.sh auch tasterd bedienbar machen
+
 waitress: auf port 80 legen
-klingel.sh auch tasterd dazu machen
+
 
 
 
