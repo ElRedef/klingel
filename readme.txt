@@ -110,7 +110,7 @@ pip install flask
     waitress
     picamera
     gpiozero
-    telegram_send
+    telegram-send
     python_json_config
     pigpio
     
@@ -126,6 +126,10 @@ mcedit /usr/share/alsa/alsa.conf
 defaults.ctl.card 0
 defaults.pcm.card 0
  
+telegram-send --configure
+token von Bothfather holen
+Siehe auch: https://pypi.org/project/telegram-send/#usage
+
   
 
 ################################################################################
@@ -134,6 +138,10 @@ defaults.pcm.card 0
 #
 ################################################################################
 tasterd: Exception abfangen wenn URL für Bild falsch bzw. flask nicht läuft? Hostname nicht bekannt?
-flask: Livebild adresse konfigurierbar
-tasterd: fehler abfangen wenn telegram nicht funktioniert
+waitress: auf port 80 legen
+Datein aufräumen
+Dokumentation aller Dateien machen -> Welche Datei bzw. Ordner ist was?
+
+
+
 
