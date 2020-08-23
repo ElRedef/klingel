@@ -37,28 +37,33 @@ aplay /home/pi/hausautomatisierung/klingel/sounds/Doorbell.wav
 #  DATEIEN
 #
 ################################################################################
+Unterverzeichnisse:
+
+klingel:    Verzeichnis mit allem für flask
+livecam:    Verzeichnis mit Startskript für mjpeg streamer
+sounds:     Diverse wav die als Klingelton eingestellt werden können
+tasterd:    Verzeichnis in dem der Tasterdaemon liegt
+tests:      Unit Tests für Flask -> nicht wirklich angefangen
 
 
+Dateien:
+config.json     Konfiguration die verwendent wird
+configwin.json  Konfiguration die unter Windows zum debuggen der flask app verwendent werden kann
+klingel.sh      Script zum starten und stoppen der services und zum einzelnen ausprobieren
+MANIFEST.in     Sollten mal ein richtigs egg für python entstehen: Wird gerade nicht benutzt
+readme.txt      Diese Doku
+setup.cfg       Sollten mal ein richtigs egg für python entstehen: Wird gerade nicht benutzt
+setup.py        Sollten mal ein richtigs egg für python entstehen: Wird gerade nicht benutzt
+start.ps1       Startscript für Windos debugging von flask
+
+
+Verzeichnis tasterd:
 tasterd.service    Unit Datei fuer Systemd. Gehört in /etc/systemd/system/
+linphone.py        Python Wrapper für Linphone.csh
+no_pic.jpg         Wird verwedent wenn über die Kamera kein Bild kommt
+taster.py          Dämon der zyklisch ausgeführt wird 
 
 
-
-
-################################################################################
-#
-#  STARTUP
-#
-################################################################################
-
-In /etc/rc.local folgendes hinzufuegen, dies startet die webapplikation und den mjpeg streamer
-logger -i -t klingel -- Starte die Klingel
-runuser -l pi -c '/home/pi/hausautomatisierung/klingel/klingel.sh start'
-
-Zusätzlich muss der tasterd mit systemctl gestartet werden
-tasterd.service in /etc/systemd/system/ kopieren
-und mit 
-'sudo systemctl enable klingel'
-enablen
 
 
 
@@ -130,6 +135,24 @@ telegram-send --configure
 token von Bothfather holen
 Siehe auch: https://pypi.org/project/telegram-send/#usage
 
+
+
+################################################################################
+#
+#  STARTUP
+#
+################################################################################
+
+In /etc/rc.local folgendes hinzufuegen, dies startet die webapplikation und den mjpeg streamer
+logger -i -t klingel -- Starte die Klingel
+runuser -l pi -c '/home/pi/hausautomatisierung/klingel/klingel.sh start'
+
+Zusätzlich muss der tasterd mit systemctl gestartet werden
+tasterd.service in /etc/systemd/system/ kopieren
+und mit 
+'sudo systemctl enable klingel'
+enablen
+
   
 
 ################################################################################
@@ -139,8 +162,7 @@ Siehe auch: https://pypi.org/project/telegram-send/#usage
 ################################################################################
 tasterd: Exception abfangen wenn URL für Bild falsch bzw. flask nicht läuft? Hostname nicht bekannt?
 waitress: auf port 80 legen
-Datein aufräumen
-Dokumentation aller Dateien machen -> Welche Datei bzw. Ordner ist was?
+klingel.sh auch tasterd dazu machen
 
 
 
