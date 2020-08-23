@@ -84,9 +84,6 @@ sudo apt-get update
 sudo apt-get dist-upgrade
 
 
-
-
-
 Samba einrichten
 https://www.elektronik-kompendium.de/sites/raspberry-pi/2007071.htm
  
@@ -119,8 +116,7 @@ pip install flask
     python_json_config
     pigpio
     
-    
- 
+     
 mkdir /home/pi/pic
  
 # mit folgendem Befehl kann die gewünschte Soundkarte ermittelt werden:
@@ -135,6 +131,9 @@ telegram-send --configure
 token von Bothfather holen
 Siehe auch: https://pypi.org/project/telegram-send/#usage
 
+#auf Port 80 vervuegbar machen
+sudo iptables -t nat -A PREROUTING -p tcp --dport 80 -j REDIRECT --to-port 5000
+ 
 
 
 ################################################################################
