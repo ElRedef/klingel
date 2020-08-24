@@ -16,6 +16,7 @@ journalctl -u tasterd
 #Logs Startup und klingel
 cat /var/log/messages | grep "Klingel"
 cat /var/log/messages | grep "MJPG"
+sudo systemctl status tasterd
 
 
 #flask ausprobieren
@@ -62,9 +63,6 @@ tasterd.service    Unit Datei fuer Systemd. Gehört in /etc/systemd/system/
 linphone.py        Python Wrapper für Linphone.csh
 no_pic.jpg         Wird verwedent wenn über die Kamera kein Bild kommt
 taster.py          Dämon der zyklisch ausgeführt wird 
-
-
-
 
 
 ################################################################################
@@ -166,7 +164,7 @@ tasterd: Exception abfangen wenn URL für Bild falsch bzw. flask nicht läuft? H
 flask: Adresse für Video in JSON File konfigurierbar machen
 klingel.sh auch tasterd bedienbar machen
 
-waitress: auf port 80 legen
+
 
 
 
