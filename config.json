@@ -9,7 +9,7 @@
     "PIC_URL" : "http://klingel:8080/?action=snapshot", 
     "PIC_SOURCE":  "streamer", 
     "PHONE_NUMBER":  "**611", 
-    "PHONE_CALL_TIME":  5, 
+    "PHONE_CALL_TIME":  10, 
     "PHONE_HOST":  "192.168.178.1", 
     "PHONE_USER":  "12345678", 
     "PHONE_PW":  "Rambo123", 
