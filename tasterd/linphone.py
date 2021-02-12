@@ -40,6 +40,13 @@ class linphone:
                 sleep(5)
                 arg = ['register', '--host', host, '--username', user, '--password', pwd]
                 o,e = self.run(arg)
+
+                #print("Initialized")
+                
+                o,e = self.run( ['soundcard', 'capture', '2'])
+                o,e = self.run( ['soundcard', 'playback', '1'])
+                
+              
         except:
             "Exception at initialising linhphone"
 
