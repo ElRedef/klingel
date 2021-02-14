@@ -16,6 +16,8 @@ def list():
     return render_template('live.html')
 
 
-
+@bp.route('/live_raw')
+def live_raw():
+    return render_template('live_raw.html')
 
 
