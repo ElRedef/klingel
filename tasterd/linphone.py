@@ -40,13 +40,6 @@ class linphone:
                 sleep(5)
                 arg = ['register', '--host', host, '--username', user, '--password', pwd]
                 o,e = self.run(arg)
-
-                #print("Initialized")
-                
-                o,e = self.run( ['soundcard', 'capture', '2'])
-                o,e = self.run( ['soundcard', 'playback', '1'])
-                
-              
         except:
             "Exception at initialising linhphone"
 
@@ -101,7 +94,7 @@ if __name__ == "__main__":
     print("Linphone test")
      
     phone = linphone()
-    phone.ini("192.168.178.1","12345678","Rambo123")
+    phone.ini("192.168.178.1","klingeluser","Rambo123")
     phone.dial("**611")
     phone.wait_for_call(5)
     

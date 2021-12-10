@@ -34,6 +34,12 @@ class taster():
         
         self.phone = linphone()
         self.phone.ini(self.config.PHONE_HOST,self.config.PHONE_USER,self.config.PHONE_PW)
+        status = self.phone.get_register_status()
+        print("Linphone status: " + status)
+        
+        status = self.phone.get_register_status()
+        print("Linphone status: " + status)
+ 
  
  
     #################################################################
@@ -127,9 +133,9 @@ class taster():
                 os.system("aplay " +self.config.SOUNDFILE + "&")
                 img_path=self.config.image_path +"/"+ self.date_time() + '.jpg'
                 self.capture_pic(self.config.PIC_SOURCE,img_path)
-                self.send_pushover(self.config.MESSAGE,img_path)
-                self.send_telegram(self.config.MESSAGE,img_path)
-    
+                #self.send_pushover(self.config.MESSAGE,img_path)
+                #self.send_telegram(self.config.MESSAGE,img_path)
+             
                 self.phone.dial(self.config.PHONE_NUMBER)
                 self.phone.wait_for_call(self.config.PHONE_CALL_TIME)
                 
