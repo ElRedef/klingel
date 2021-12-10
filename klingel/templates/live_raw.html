@@ -1,22 +1,16 @@
-{% extends 'base.html' %}
 
-{% block header %}
-  <h1>Livebild</h1>
-  <br>
-{% endblock %}
 
 {% block content %}
  
-<br>
-<br>
 
-LIVERAW
 
+ <a href="http://192.168.178.31/live/" title="Livebild" onclick="(window.open(this.href, '', '')); return false;">
 <p style="margin: auto;">
-    <img id="streamimage" class="xform" src="http://klingel:8080/?action=stream" style="width: 780px; height: 585px; margin:auto;">
+    <img id="streamimage" class="xform" src="http://klingel:8080/?action=stream" style="width: 450px; height: 450px; margin:auto;">
 </p>
+</a>
 
-<br> 
+
 
 
 {% endblock %}
