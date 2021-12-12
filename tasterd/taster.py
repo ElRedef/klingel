@@ -34,11 +34,8 @@ class taster():
         
         self.phone = linphone()
         self.phone.ini(self.config.PHONE_HOST,self.config.PHONE_USER,self.config.PHONE_PW)
-        status = self.phone.get_register_status()
-        print("Linphone status: " + status)
+
         
-        status = self.phone.get_register_status()
-        print("Linphone status: " + status)
  
  
  
@@ -136,6 +133,9 @@ class taster():
                 #self.send_pushover(self.config.MESSAGE,img_path)
                 #self.send_telegram(self.config.MESSAGE,img_path)
              
+             
+                status = self.phone.get_register_status()
+                print("Linphone status: " + status)
                 self.phone.dial(self.config.PHONE_NUMBER)
                 self.phone.wait_for_call(self.config.PHONE_CALL_TIME)
                 
