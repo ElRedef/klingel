@@ -83,7 +83,6 @@ sudo apt-get dist-upgrade
 
 
 Samba einrichten
-https://www.elektronik-kompendium.de/sites/raspberry-pi/2007071.htm
  
 sudo apt-get install python3
 sudo apt-get install python3-pip
@@ -96,8 +95,6 @@ sudo apt install python3-gpiozero
 MJPEG Streamer installieren
 https://github.com/cncjs/cncjs/wiki/Setup-Guide:-Raspberry-Pi-%7C-MJPEG-Streamer-Install-&-Setup-&-FFMpeg-Recording
 
-git auschecken
-git clone ssh://johannes@192.168.178.2/volume1/git_repos/hausautomatisierung.git
 
 
 nano ~/.bashrc
