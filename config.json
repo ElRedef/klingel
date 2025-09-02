@@ -1,21 +1,21 @@
 {
     "image_path": "/home/pi/pic",
     "no_path": "/home/pi/hausautomatisierung/klingel/tasterd/",
-    "pic_path": "/home/pi/pic",
-    "PUSHOVER_USER_KEY":  "ue1j2qp7uuinvrcuvmzztojobzv3re",
-    "PUSHOVER_APP_TOKEN": "asrgueig8omqmoh4zdvvxqt8kevs45",
-    "RASPI_BUTTON" : "Button(14)", 
-    "MESSAGE" : "Es ist jemand an der Tür",  
-    "PIC_URL" : "http://klingel:8080/?action=snapshot", 
-    "PIC_SOURCE":  "streamer", 
-    "PHONE_NUMBER":  "**610", 
-    "PHONE_CALL_TIME":  10, 
-    "PHONE_HOST":  "192.168.178.1", 
-    "PHONE_USER":  "klingeluser", 
-    "PHONE_PW":  "Rambo123", 
-    "SOUNDFILE":  "/home/pi/hausautomatisierung/klingel/sounds/Doorbell.wav" 
-    
-    
+    "image_path": "<IMAGE_PATH>",
+    "no_path": "<NO_PATH>",
+    "pic_path": "<PIC_PATH>",
+    "PUSHOVER_USER_KEY":  "<PUSHOVER_USER_KEY>",
+    "PUSHOVER_APP_TOKEN": "<PUSHOVER_APP_TOKEN>",
+    "RASPI_BUTTON" : "<RASPI_BUTTON>", 
+    "MESSAGE" : "<MESSAGE>",  
+    "PIC_URL" : "<PIC_URL>", 
+    "PIC_SOURCE":  "<PIC_SOURCE>", 
+    "PHONE_NUMBER":  "<PHONE_NUMBER>", 
+    "PHONE_CALL_TIME":  <PHONE_CALL_TIME>, 
+    "PHONE_HOST":  "<PHONE_HOST>", 
+    "PHONE_USER":  "<PHONE_USER>", 
+    "PHONE_PW":  "<PHONE_PW>", 
+    "SOUNDFILE":  "<SOUNDFILE>" 
     
     
     

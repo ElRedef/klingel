@@ -1,8 +1,8 @@
 {
-    "user": "joe",
-    "pic_path": "X:\\pic",
-    "superuser": "root",
+    "user": "<USER>",
+    "pic_path": "<PIC_PATH>",
+    "superuser": "<SUPERUSER>",
     "settings" :{
-        "set1": "Einstellung 1 "
+        "set1": "<SETTING_1>"
     }
 }
